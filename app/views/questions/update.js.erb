@@ -1,0 +1,3 @@
+$('#question_link_<%= @question.id %>').remove();
+
+$('#all_questions').append('<li id="question_link_<%= @question.id %>"><%= link_to @question.name, question_path(@question), id: "question_link" %> | <%= link_to "Edit from Update.js", edit_question_path(@question), id: "edit_question_link", class: "btn btn-default", remote: true %> | <%= link_to "Delete List", question_path(@question), :data => {:confirm => "Are you sure?", :method => "delete"}, remote: true  %></li>')
