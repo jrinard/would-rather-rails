@@ -32,11 +32,15 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.update(question_params)
       flash[:notice] = "Question successfully updated!"
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html { redirect_to questions_path}
+        format.js
+        end
     else
       render :edit
     end
   end
+
 
   def destroy
     @question = Question.find(params[:id])
