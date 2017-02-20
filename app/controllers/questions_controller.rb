@@ -15,7 +15,10 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash[:notice] = "Question successfully added!"
-      redirect_to questions_path
+      respond_to do |format|
+        format.html { redirect_to questions_path}
+        format.js
+        end
     else
       render :new
     end
@@ -39,8 +42,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     flash[:notice] = "Question successfully deleted."
-    redirect_to questions_path
-  end
+    respond_to do |format|
+          format.html { redirect_to questions_path }
+          format.js
+        end
+      end
 
   private
   def question_params
