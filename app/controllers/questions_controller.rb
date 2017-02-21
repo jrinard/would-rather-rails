@@ -42,6 +42,8 @@ class QuestionsController < ApplicationController
   end
 
   def vote
+    @question = Question.find(params[:question_id])
+    @question_vote = params[:question_option]
     respond_to do |format|
       format.html { redirect_to questions_path}
       format.js
