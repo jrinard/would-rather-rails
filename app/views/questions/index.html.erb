@@ -1,39 +1,29 @@
-<h1>Would You Rather</h1>
 
+<% if current_user %>
+<h1>Would You Rather</h1>
 <ul id="all_questions">
   <% @questions.each do |question| %>
     <li class="well" id="question_link_<%= question.id %>">
 
       <div class="pull-right">
       <span id="edit_<%= question.id %>"><%= link_to "Edit", edit_question_path(question), id: "edit_question_link", class: "btn btn-default", remote: true %></span> |
-      <%= link_to "Delete Question", question_path(question),
-                              :data => {:confirm => "Are you sure?",
-                                             :method => "delete"}, remote: true  %>
-                                           </div>
-
-      <div class="box" id="vote_<%= question.option_one %>_<%= question.id %>">
-        <%= link_to question.option_one, question_vote_path(question, question_option: question.option_one), remote: true %>
-        <span class="vote-number"><%= question.get_likes.size %></span>
-      </div>
-
-
-      <div class="box" id="vote_<%= question.option_two %>_<%= question.id %>">
-        <%= link_to question.option_two, question_vote_path(question, question_option: question.option_two), remote: true %><span class="vote-number"> <%= question.get_dislikes.size %></span>
-      </div>
-
+      <%= link_to "Delete Question", question_path(question),:data => {:confirm => "Are you sure?",:method => "delete"}, remote: true  %></div>
 
      <% if current_user.voted_up_on? question %>
-      <%= link_to "First", {:upvote => question.id}, :class => "bigger highlight" %>
+      <span class="vote-number"><%= question.get_likes.size %></span>
+      <%= link_to question.option_one, {:upvote => question.id}, :class => "box highlight" %>
       <% else %>
-      <%= link_to "First", {:upvote => question.id}, :class => "bigger" %>
+      <span class="vote-number"><%= question.get_likes.size %></span>
+      <%= link_to question.option_one, {:upvote => question.id}, :class => "box" %>
       <% end %>
 
       <% if current_user.voted_down_on? question %>
-      <%= link_to "Second", {:downvote => question.id}, :class => "bigger highlight" %>
+      <span class="vote-number"> <%= question.get_dislikes.size %></span>
+      <%= link_to question.option_two, {:downvote => question.id}, :class => "box highlight" %>
       <% else %>
-      <%= link_to "Second", {:downvote => question.id}, :class => "bigger" %>
+      <span class="vote-number"> <%= question.get_dislikes.size %></span>
+      <%= link_to question.option_two, {:downvote => question.id}, :class => "box" %>
       <% end %>
-
     </li>
   <% end %>
 </ul>
@@ -43,3 +33,6 @@
 <hr>
 <%= link_to "Questions", questions_path %> |
 <%= link_to "New Question", new_question_path, id: "new_question_link", class: "btn btn-default", remote: true %>
+<% else %>
+<h1>Log In to See the questions</h1>
+<% end %>
