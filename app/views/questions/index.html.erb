@@ -11,19 +11,24 @@
       <%= link_to "Delete Question", question_path(question),:data => {:confirm => "Are you sure?",:method => "delete"}, remote: true  %></div>
 
      <% if current_user.voted_up_on? question %>
+        <span class="white"><%= question.option_one %></span>
+        <span class="vote-number"><%= question.get_likes.size %></span>
         <%= link_to image_tag(question.image_one, :class => "box highlight img-responsive"), {:upvote => question.id} %>
-        <span class="vote-number"><%= question.get_likes.size %></span>
+
       <% else %>
-        <%= link_to image_tag(question.image_one, :class => "box img-responsive"), {:upvote => question.id} %>
+      <span class="white"><%= question.option_one %></span>
         <span class="vote-number"><%= question.get_likes.size %></span>
+        <%= link_to image_tag(question.image_one, :class => "box img-responsive"), {:upvote => question.id} %>
       <% end %>
 
       <% if current_user.voted_down_on? question %>
         <%= link_to image_tag(question.image_two, :class => "box highlight img-responsive"), {:downvote => question.id} %>
           <span class="vote-number"> <%= question.get_dislikes.size %></span>
+          <span class="white"><%= question.option_two %></span>
       <% else %>
       <%= link_to image_tag(question.image_two, :class => "box img-responsive"), {:downvote => question.id} %>
       <span class="vote-number"> <%= question.get_dislikes.size %></span>
+      <span class="white"><%= question.option_two %></span>
       <% end %>
     </li>
   <% end %>

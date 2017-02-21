@@ -608,7 +608,22 @@
         null
       ],
       "/Users/Guest/Desktop/would-you-rather-rails-ajax/spec/features/question_pages_spec.rb": [
-        1
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
       ],
       "/Users/Guest/Desktop/would-you-rather-rails-ajax/spec/models/question_spec.rb": [
         1,
@@ -640,12 +655,12 @@
         1,
         null,
         1,
-        2,
-        2,
+        3,
+        3,
         0,
         0,
         null,
-        2,
+        3,
         0,
         0,
         null,
@@ -739,6 +754,6 @@
         null
       ]
     },
-    "timestamp": 1487718469
+    "timestamp": 1487719100
   }
 }
