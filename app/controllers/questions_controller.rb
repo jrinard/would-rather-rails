@@ -1,6 +1,16 @@
 class QuestionsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:index]
+
   def index
     @questions = Question.all
+    if params[:upvote]
+      @question = Question.find(params[:upvote])
+      @question.liked_by current_user
+    end
+    if params[:downvote]
+      @question = Question.find(params[:downvote])
+      @question.disliked_by current_user
+    end
   end
 
   def show

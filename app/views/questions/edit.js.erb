@@ -1,2 +1,3 @@
-$('#edit_question_link').hide()
+$('#edit_<%= @question.id %>').hide()
+$('#edit_show').children().hide();
 $('#edit_show').append('<%= j render("form") %>')

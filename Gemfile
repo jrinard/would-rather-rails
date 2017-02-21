@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
 gem 'acts_as_votable', '~> 0.10.0'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'devise'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
