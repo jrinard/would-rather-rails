@@ -21,11 +21,18 @@
         <%= link_to question.option_two, question_vote_path(question, question_option: question.option_two), remote: true %><span class="vote-number"> <%= question.get_dislikes.size %></span>
       </div>
 
-      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-      <%= link_to "First", {:upvote => question.id}, :class => "bigger" %>
 
-      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+     <% if current_user.voted_up_on? question %>
+      <%= link_to "First", {:upvote => question.id}, :class => "bigger highlight" %>
+      <% else %>
+      <%= link_to "First", {:upvote => question.id}, :class => "bigger" %>
+      <% end %>
+
+      <% if current_user.voted_down_on? question %>
+      <%= link_to "Second", {:downvote => question.id}, :class => "bigger highlight" %>
+      <% else %>
       <%= link_to "Second", {:downvote => question.id}, :class => "bigger" %>
+      <% end %>
 
     </li>
   <% end %>
