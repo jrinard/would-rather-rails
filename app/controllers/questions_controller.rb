@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 
   def create
 
-    @question = Question.new( :option_one => question_params[:option_one], :option_two => question_params[:option_two], :image_one => question_params[:image_one], :image_two => question_params[:image_two])
+    @question = Question.new(question_params)
     if @question.save
       flash[:notice] = "Question successfully added!"
       respond_to do |format|
