@@ -41,6 +41,13 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def vote
+    respond_to do |format|
+      format.html { redirect_to questions_path}
+      format.js
+      end
+  end
+
 
   def destroy
     @question = Question.find(params[:id])

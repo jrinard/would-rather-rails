@@ -11,8 +11,8 @@
                                              :method => "delete"}, remote: true  %>
                                            </div>
 
-      <div class="box"><%= question.option_one %></div>
-      <div class="box"><%= question.option_two %></div>
+      <div class="box highlight"><%= link_to question.option_one, question_vote_path(question), remote: true %></div>
+      <div class="box"><%= link_to question.option_two, question_vote_path(question), remote: true %></div>
 
     </li>
   <% end %>
