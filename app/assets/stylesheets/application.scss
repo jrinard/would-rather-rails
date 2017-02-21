@@ -44,6 +44,23 @@ li {
   border: solid 5px #2e64ba;
 }
 
-.red {
-  background-color: red;
+// .vote-box {
+//   background-color: gray;
+// }
+
+// .box a {
+//   position: relative;
+// }
+//
+// .bigger:after {
+//     content:"";
+//     padding: 50px;
+//     position: absolute;
+//     left: -25px;
+//     top: -25px;
+// }
+
+a.bigger{
+    padding:50px;
+    background:gray; /* you can delete this*/
 }

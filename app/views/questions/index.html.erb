@@ -11,22 +11,21 @@
                                              :method => "delete"}, remote: true  %>
                                            </div>
 
-      <div class="box" id="vote_<%= question.option_one %>_<%= question.id %>"><%= link_to question.option_one, question_vote_path(question, question_option: question.option_one), remote: true %>
-      <span class="vote-number"><%= question.get_likes.size %></span></div>
+      <div class="box" id="vote_<%= question.option_one %>_<%= question.id %>">
+        <%= link_to question.option_one, question_vote_path(question, question_option: question.option_one), remote: true %>
+        <span class="vote-number"><%= question.get_likes.size %></span>
+      </div>
 
 
-      <div class="box" id="vote_<%= question.option_two %>_<%= question.id %>"><%= link_to question.option_two, question_vote_path(question, question_option: question.option_two), remote: true %><span class="vote-number"> <%= question.get_dislikes.size %></span></div>
+      <div class="box" id="vote_<%= question.option_two %>_<%= question.id %>">
+        <%= link_to question.option_two, question_vote_path(question, question_option: question.option_two), remote: true %><span class="vote-number"> <%= question.get_dislikes.size %></span>
+      </div>
 
+      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+      <%= link_to "First", {:upvote => question.id}, :class => "bigger" %>
 
-
-
-
-        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-        <%= link_to "Vote", :upvote => question.id %>
-
-        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><%= link_to "Vote", :downvote => question.id %>
-
-
+      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+      <%= link_to "Second", {:downvote => question.id}, :class => "bigger" %>
 
     </li>
   <% end %>
