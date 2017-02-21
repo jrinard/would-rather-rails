@@ -5,24 +5,25 @@
   <% @questions.each do |question| %>
     <li class="well" id="question_link_<%= question.id %>">
 
+
       <div class="pull-right">
       <span id="edit_<%= question.id %>"><%= link_to "Edit", edit_question_path(question), id: "edit_question_link", class: "btn btn-default", remote: true %></span> |
       <%= link_to "Delete Question", question_path(question),:data => {:confirm => "Are you sure?",:method => "delete"}, remote: true  %></div>
 
      <% if current_user.voted_up_on? question %>
-      <span class="vote-number"><%= question.get_likes.size %></span>
-      <%= link_to question.option_one, {:upvote => question.id}, :class => "box highlight" %>
+        <%= link_to image_tag(question.image_one, :class => "box highlight img-responsive"), {:upvote => question.id} %>
+        <span class="vote-number"><%= question.get_likes.size %></span>
       <% else %>
-      <span class="vote-number"><%= question.get_likes.size %></span>
-      <%= link_to question.option_one, {:upvote => question.id}, :class => "box" %>
+        <%= link_to image_tag(question.image_one, :class => "box img-responsive"), {:upvote => question.id} %>
+        <span class="vote-number"><%= question.get_likes.size %></span>
       <% end %>
 
       <% if current_user.voted_down_on? question %>
-      <span class="vote-number"> <%= question.get_dislikes.size %></span>
-      <%= link_to question.option_two, {:downvote => question.id}, :class => "box highlight" %>
+        <%= link_to image_tag(question.image_two, :class => "box highlight img-responsive"), {:downvote => question.id} %>
+          <span class="vote-number"> <%= question.get_dislikes.size %></span>
       <% else %>
+      <%= link_to image_tag(question.image_two, :class => "box img-responsive"), {:downvote => question.id} %>
       <span class="vote-number"> <%= question.get_dislikes.size %></span>
-      <%= link_to question.option_two, {:downvote => question.id}, :class => "box" %>
       <% end %>
     </li>
   <% end %>

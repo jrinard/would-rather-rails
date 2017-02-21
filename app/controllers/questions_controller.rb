@@ -22,7 +22,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+
+    @question = Question.new( :option_one => question_params[:option_one], :option_two => question_params[:option_two], :image_one => question_params[:image_one], :image_two => question_params[:image_two])
     if @question.save
       flash[:notice] = "Question successfully added!"
       respond_to do |format|
@@ -73,7 +74,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:option_one, :option_two)
+    params.require(:question).permit(:option_one, :option_two, :image_one, :image_two)
   end
 
 end
