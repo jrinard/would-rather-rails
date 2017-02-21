@@ -1,14 +1,19 @@
-<h1>Questions</h1>
+<h1>Would You Rather</h1>
 
 <ul id="all_questions">
   <% @questions.each do |question| %>
     <li class="well" id="question_link_<%= question.id %>">
-      <%= link_to question.option_one, question_path(question), id: "question_link"%> |
-    <%= link_to question.option_two, question_path(question), id: "question_link" %>
+
+      <div class="pull-right">
       <%= link_to "Edit", edit_question_path(question), id: "edit_question_link", class: "btn btn-default", remote: true %> |
       <%= link_to "Delete Question", question_path(question),
                               :data => {:confirm => "Are you sure?",
                                              :method => "delete"}, remote: true  %>
+                                           </div>
+
+      <div class="box"><%= question.option_one %></div>
+      <div class="box"><%= question.option_two %></div>
+
     </li>
   <% end %>
 </ul>

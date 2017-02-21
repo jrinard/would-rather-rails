@@ -26,11 +26,14 @@ li {
   list-style-type: none;
 }
 
-#question_link {
+.box {
   background-color: #f3f3f3;
   padding: 10px;
   margin: 20px;
   border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  display: inline-block;
 }
 
 .well {
