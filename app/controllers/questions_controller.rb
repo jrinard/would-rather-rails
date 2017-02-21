@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
 
   def vote
     @question = Question.find(params[:question_id])
-    @question_vote = params[:question_option]
+    @question_vote = params[:question_option][:question_vote]
     respond_to do |format|
       format.html { redirect_to questions_path}
       format.js
