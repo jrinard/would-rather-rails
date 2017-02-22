@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
 gem 'acts_as_votable', '~> 0.10.0'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'devise'
+gem 'database_cleaner'
 
 
 group :development, :test do
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
+  gem 'poltergeist'
 end
 
 group :development do
